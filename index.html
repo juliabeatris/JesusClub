@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jesus Club Salete - Nossa Jornada 2025</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos Gerais - TEMA ESCURO */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #f4f4f4;
+            line-height: 1.7;
+        }
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        /* Cabeçalho - TEMA CLARO */
+        header {
+            background: #ffffff;
+            color: #333;
+            padding: 10px 0; /* Diminuí o padding para a logo maior não ocupar tanto espaço vertical */
+            border-bottom: #8A2BE2 4px solid;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        header .container { display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
+        header #branding { display: flex; align-items: center; }
+        header #branding img { 
+            height: 80px; /* --- CORREÇÃO 1: LOGO AUMENTADA --- */
+            margin-right: 15px; 
+        }
+        header #branding h1 { margin: 0; font-size: 24px; }
+        /* --- CORREÇÃO 2: COR DO TÍTULO ALTERADA --- */
+        header #branding h1 a {
+            color: #8A2BE2; /* Roxo para combinar com a identidade */
+            text-decoration: none;
+        }
+        header nav a { color: #333; text-decoration: none; text-transform: uppercase; font-size: 16px; transition: color 0.3s; }
+        header nav ul { list-style: none; margin: 0; padding: 0; }
+        header nav li { display: inline; margin-left: 20px; }
+        header nav a:hover { color: #8A2BE2; }
+        
+        /* Seção de Destaque (Banner) */
+        #showcase {
+            min-height: 500px;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://via.placeholder.com/1500x700/222222/FFFFFF?text=A+FOTO+PERFEITA+AQUI') no-repeat center center/cover;
+            color: #fff;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; padding: 0 20px;
+        }
+        #showcase h1 { font-size: 55px; margin-bottom: 10px; font-weight: 700; text-shadow: 2px 2px 8px #000; }
+        #showcase p { font-size: 22px; text-shadow: 2px 2px 8px #000; }
+
+        /* Estilos Gerais de Seção */
+        section { padding: 60px 0; }
+        .section-title { text-align: center; font-size: 32px; margin-bottom: 40px; font-weight: 700; color: #f4f4f4; }
+        .highlight-section { background-color: #1E1E1E; }
+        p { font-size: 18px; text-align: justify; margin-bottom: 15px; }
+
+        /* Caixas de Destaque */
+        .highlight-box {
+            background: #2C2C2C; border-left: 5px solid #8A2BE2; padding: 25px;
+            margin: 30px 0; border-radius: 8px;
+        }
+        .highlight-box h3 { margin-top: 0; font-size: 24px; color: #8A2BE2; font-weight: 700; }
+
+        /* Seção Equipe - GRID 3x3 */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            text-align: center;
+        }
+        .team-member {
+            background: #2C2C2C; padding: 20px; border-radius: 8px;
+        }
+        .team-member h4 { margin: 0 0 5px 0; font-size: 20px; font-weight: 700; }
+        .team-member span { font-size: 16px; color: #8A2BE2; font-weight: 700; }
+
+        /* Carrossel de Memórias */
+        .carousel-container { position: relative; max-width: 800px; margin: auto; overflow: hidden; border-radius: 10px; }
+        .carousel-slide { display: flex; transition: transform 0.5s ease-in-out; }
+        .carousel-slide img { width: 100%; flex-shrink: 0; }
+        .carousel-button { position: absolute; top: 50%; transform: translateY(-50%); background-color: rgba(0, 0, 0, 0.6); color: white; border: none; padding: 10px 15px; cursor: pointer; border-radius: 5px; font-size: 20px; z-index: 100; }
+        .prev { left: 10px; }
+        .next { right: 10px; }
+
+        /* Testemunhos */
+        blockquote { background: #2C2C2C; border-left: 5px solid #555; margin: 20px 0; padding: 20px; font-style: italic; border-radius: 8px; }
+        blockquote footer { margin-top: 10px; text-align: right; font-style: normal; font-weight: bold; color: #ccc; }
+        
+        /* Legado */
+        #legado { text-align: center; }
+        #legado .final-message { font-size: 36px; font-weight: 700; color: #8A2BE2; margin: 40px 0; }
+        #legado a { text-decoration: none; color: #f4f4f4; font-weight: 700; font-size: 20px; background: #2C2C2C; padding: 10px 20px; border-radius: 5px; transition: background 0.3s; }
+        #legado a:hover { background: #444; }
+
+        /* Rodapé */
+        footer { padding: 25px; color: #fff; background-color: #222; text-align: center; }
+        
+        /* Media Query para responsividade */
+        @media (max-width: 768px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            header .container { flex-direction: column; }
+            header #branding { margin-bottom: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div id="branding">
+                <img src="logo.png" alt="Logo Jesus Club">
+                <h1><a href="#">Jesus Club Salete</a></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#historia">História</a></li>
+                    <li><a href="#equipe">Equipe</a></li>
+                    <li><a href="#memorias">Memórias</a></li>
+                    <li><a href="#legado">Legado</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="showcase">
+        <h1>Nossa Jornada em 2025</h1>
+        <p>Recordando um ano de fé, amizade e evangelho na escola.</p>
+    </section>
+
+    <div class="container">
+        <!-- O resto do conteúdo HTML permanece o mesmo -->
+        <section id="historia">
+            <h2 class="section-title">Nossa História</h2>
+            <p>Tudo começou com uma faísca. Inspirados pelo movimento "The Jesus Clubs" de Brian Barcelona, apresentado a nós pelo pregador Brendon na igreja CCC, sentimos o chamado para levar o evangelho ao nosso colégio. A reação inicial foi incrível; colegas e professores acharam ótima a ideia de espalhar o nome de Jesus pelos corredores.</p>
+            <p>Esse sonho não teria saído do papel sem o apoio crucial de nossa igreja, dos nossos pastores e, em especial, do <strong>Dani e da Gabi</strong>, que nos deram a força e a direção necessárias. O projeto fluiu de uma maneira que só pode ser descrita como divina, sem grandes obstáculos, mostrando que estávamos no caminho certo.</p>
+            
+            <div class="highlight-box">
+                <h3>Um Dia Memorável: O Poder da Oração</h3>
+                <p>Houve uma quinta-feira em que o tema era **oração**. A atmosfera era tão contagiante que, quando vimos, éramos mais de <strong>60 pessoas</strong> no intervalo: alunos, professores e inspetores, todos unidos. Comemoramos com coxinhas, mas o verdadeiro alimento foi a comunhão. Aquele dia provou que a oração move montanhas, e também une uma escola.</p>
+            </div>
+        </section>
+
+        <section id="equipe" class="highlight-section">
+            <h2 class="section-title">Nossa Equipe 2025</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 40px auto;">Nenhuma jornada é feita sozinha. Este foi o time que, com ideias que vinham de Deus, fez cada encontro acontecer.</p>
+            <div class="team-grid">
+                <div class="team-member"><h4>Gian</h4><span>Líder</span></div>
+                <div class="team-member"><h4>Júlia</h4><span>Líder</span></div>
+                <div class="team-member"><h4>Pedro</h4><span>Líder</span></div>
+                <div class="team-member"><h4>David</h4><span>Louvor</span></div>
+                <div class="team-member"><h4>Klaus</h4><span>Mídia</span></div>
+                <div class="team-member"><h4>André</h4><span>Equipe de Apoio</span></div>
+                <div class="team-member"><h4>Victoria</h4><span>Equipe de Apoio</span></div>
+                <div class="team-member"><h4>Wilson</h4><span>Equipe de Apoio</span></div>
+                <div class="team-member"><h4>João</h4><span>Equipe de Apoio</span></div>
+            </div>
+        </section>
+
+        <section id="memorias">
+            <h2 class="section-title">Nossas Memórias em Fotos</h2>
+            <div class="carousel-container">
+                <div class="carousel-slide">
+                    <img src="https://via.placeholder.com/800x500/8A2BE2/FFFFFF?text=Foto+Espontânea+1" alt="Memória 1">
+                    <img src="https://via.placeholder.com/800x500/222222/FFFFFF?text=Foto+Espontânea+2" alt="Memória 2">
+                    <img src="https://via.placeholder.com/800x500/CCCCCC/000000?text=Foto+Espontânea+3" alt="Memória 3">
+                </div>
+                <button class="carousel-button prev">&#10094;</button>
+                <button class="carousel-button next">&#10095;</button>
+            </div>
+        </section>
+
+        <section id="testemunhos" class="highlight-section">
+            <h2 class="section-title">O Que o J-Club Significou</h2>
+            <blockquote>
+                <p>"O Jesus Club foi o melhor momento da minha semana, um lugar para recarregar as energias e encontrar amigos de verdade."</p>
+                <footer>— Nome do Membro 1</footer>
+            </blockquote>
+            <blockquote>
+                <p>"Nunca vou esquecer a alegria dos nossos encontros. Aprendi muito sobre a Bíblia e sobre amizade."</p>
+                <footer>— Nome do Membro 2</footer>
+            </blockquote>
+        </section>
+
+        <section id="legado">
+            <h2 class="section-title">Nosso Legado</h2>
+            <p>Para quem quer começar um clube: nosso maior conselho é este:</p>
+            <div class="highlight-box"><h3>Coloque seus olhos em Jesus.</h3></div>
+            <p>Aos futuros alunos do Salete: a chama foi acesa. Agora é com vocês. Continuem este trabalho! E para todos que fizeram parte, nossa história continua viva em cada lembrança e em nosso Instagram, onde nossas postagens engraçadas e momentos marcantes estão guardados.</p>
+            <div class="final-message">Jesus te ama</div>
+            <a href="https://www.instagram.com/jclubsalete" target="_blank">Relembre no @jclubsalete</a>
+        </section>
+    </div>
+
+    <footer>
+        <p>Jesus Club Salete 2025 &copy; Um legado de fé.</p>
+    </footer>
+
+    <script>
+        const slide = document.querySelector('.carousel-slide');
+        const images = document.querySelectorAll('.carousel-slide img');
+        const prevBtn = document.querySelector('.prev');
+        const nextBtn = document.querySelector('.next');
+        let currentIndex = 0;
+        const totalImages = images.length;
+        function showSlide(index) {
+            if (index >= totalImages) { currentIndex = 0; } 
+            else if (index < 0) { currentIndex = totalImages - 1; } 
+            else { currentIndex = index; }
+            slide.style.transform = `translateX(${-currentIndex * 100}%)`;
+        }
+        nextBtn.addEventListener('click', () => showSlide(currentIndex + 1));
+        prevBtn.addEventListener('click', () => showSlide(currentIndex - 1));
+    </script>
+
+</body>
+</html>
